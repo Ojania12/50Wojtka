@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 Urodziny Wojtka</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --main-bg-color: #111;
+            --accent-color: #ff00ff;
+            --text-color: #ffffff;
+            --section-bg: rgba(255, 255, 255, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--main-bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            position: relative;
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 0, 255, 0.2);
+        }
+        
+        .main-title {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .countdown-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            width: 220px;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .countdown-title {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .event-date {
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .countdown-box {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 8px 5px;
+            border-radius: 5px;
+            min-width: 48px;
+            text-align: center;
+        }
+        
+        .countdown-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 3px;
+        }
+        
+        /* Main Content */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .quote-container {
+            max-width: 800px;
+            margin: 20px auto 30px;
+            padding: 15px 25px;
+            background-color: var(--section-bg);
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .quote-container:before {
+            content: """;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 5rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+            line-height: 1;
+        }
+        
+        .quote-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quote-author {
+            text-align: right;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .wishes {
+            background-color: var(--section-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 800px;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .wishes-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .wishes-signature {
+            text-align: right;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        /* Info Section */
+        .info-section {
+            background-color: var(--section-bg);
+            padding: 50px 0;
+            margin: 20px 0;
+        }
+        
+        .info-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+        }
+        
+        .info-block {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .important-info {
+            background-color: rgba(255, 0, 255, 0.05);
+            border: 2px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 25px;
+            height: 100%;
+        }
+        
+        .important-info-title {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .important-info p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .important-info p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .important-info em {
+            font-style: italic;
+            color: var(--accent-color);
+        }
+        
+        /* Location Section */
+        .location-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .venue-details {
+            margin-bottom: 40px;
+        }
+        
+        .venue-name {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        
+        .venue-address {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .venue-address i {
+            color: var(--accent-color);
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 400px;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 0, 255, 0.2);
+        }
+        
+        footer p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Media Queries */
+        @media (max-width: 900px) {
+            .countdown-container {
+                position: static;
+                width: 280px;
+                margin: 20px auto;
+            }
+            
+            .countdown-box {
+                min-width: 60px;
+            }
+            
+            .info-container {
+                flex-direction: column;
+            }
+            
+            .info-block {
+                width: 100%;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+    
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="main-title"><span class="highlight">50 URODZINY WOJTKA</span></h1>
+            <p style="text-align: center; font-size: 1.3rem; margin-bottom: 20px;">Sobota, 10 maja 2025, 15:00</p>
+            
+            <div class="countdown-container">
+                <h2 class="countdown-title">Do imprezy pozostało</h2>
+                <div class="countdown-timer" id="countdown">
+                    <div class="countdown-box">
+                        <div class="countdown-value" id="days">00</div>
+                        <div class="countdown-label">Dni</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-value" id="hours">00</div>
+                        <div class="countdown-label">Godz</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-value" id="minutes">00</div>
+                        <div class="countdown-label">Min</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div class="countdown-value" id="seconds">00</div>
+                        <div class="countdown-label">Sek</div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </header>
+    
+    <section class="hero-section">
+        <div class="container">
+            <div class="quote-container">
+                <p class="quote-text" style="white-space: nowrap;">"Życie jest jak jazda na rowerze. Żeby utrzymać równowagę, musisz być w ciągłym ruchu."</p>
+                <p class="quote-author">- Albert Einstein</p>
+            </div>
+            
+
+        </div>
+    </section>
+    
+    <section class="info-section">
+        <div class="container">
+            <div class="info-container">
+                <div class="info-block">
+                    <div class="important-info">
+                        <h2 class="important-info-title">Plan imprezy</h2>
+                        <p><strong>15:00</strong> - Rozpoczęcie imprezy</p>
+                        <p><strong>16:00-18:30</strong> - Zajęcia z trenerem na siłowni / relaks na basenie</p>
+                        <p><strong>18:30-19:00</strong> - przygotowanie do wieczoru</p>
+                        <p><strong>19:00</strong> - Kolacja i dalsze atrakcje – bawimy się, ile damy radę (albo do momentu, aż padniemy)</p>
+                        <p><strong>Rano</strong> - Śniadanie – żeby odzyskać siły i zebrać wspomnienia (lub strzępy wspomnień)</p>
+                    </div>
+                </div>
+                
+                <div class="info-block">
+                    <div class="important-info">
+                        <h2 class="important-info-title">Informacja organizacyjna</h2>
+                        <p>Nie zapomnij wrzucić do torby stroju kąpielowego i ciuchów do ćwiczeń – od 16:00 do 18:00 mamy zarezerwowanego trenera na siłowni! Będzie trochę pocenia się, trochę śmiechu i pewnie kilka jęków pt. <em>"dlaczego ja się na to zgodziłem/am?"</em>.</p>
+                        <p>Po wszystkim wskakujemy do basenu – relaks gwarantowany!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="location-section">
+        <div class="container">
+            <h2 class="section-title">Miejsce Imprezy</h2>
+            
+            <div class="venue-details">
+                <p class="venue-name">DoubleTree by Hilton Hotel & Conference Centre</p>
+                <p class="venue-address">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Warszawa 04-797, ul. Skalnicowa 21
+                </p>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.3695836781054!2d21.001742776365237!3d52.247171958262785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecd1027a94c07%3A0x4dad32d7a6b8487e!2sSkalnicowa%2021%2C%2004-797%20Warszawa!5e0!3m2!1spl!2spl!4v1715169811646!5m2!1spl!2spl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 | 50 Urodziny Wojtka</p>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date("May 10, 2025 15:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerHTML = days.toString().padStart(2, "0");
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, "0");
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, "0");
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, "0");
+            
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "<h3>Impreza już się rozpoczęła!</h3>";
+            }
+        }
+        
+        // Initial call and then update every second
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        
+
+    </script>
+</body>
+</html>
